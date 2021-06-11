@@ -18,7 +18,7 @@ Assume the environment does not allow you to store 64-bit integers (signed or un
 // reversedInteger(456)
 
 const reverse = nums => {
-    const limit = Number.MAX_SAFE_INTEGER;
+    const limit = 2147483648;
     const k = nums < 0 ? -1 : 1;
     const n = Number(String(Math.abs(nums)).split('').reverse().join(''));
     return n > limit ? 0 : n * k;
