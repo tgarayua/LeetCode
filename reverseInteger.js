@@ -24,4 +24,4 @@ const reverse = nums => {
     return n > limit ? 0 : n * k;
 };
 
-console.log(reverse(90071992547409))
+console.log(reverse(-1238787))
