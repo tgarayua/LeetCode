@@ -17,14 +17,20 @@ Break It Down
 
 var nums = 121
 
-const isPalindrome = (nums) => {
-    let str = nums.toString()
-    let reversedStr = nums.toString().split('').reverse().join('')
+const isPalindrome = (num) => {
+    let str = num.toString()
 
-    if (str === reversedStr) {
-        return true
+    for (let i = 0; i < str.length; i++){
+        
+        if (str[i] !== str[str.length - i - 1]){
+            return false
+        }
     }
-    return false
+   return true
+        // if (numStr[number] === numStr[numStr.length -1])
+  
 }
 
-console.log(isPalindrome(nums))
+const num = 3194613
+console.log(isPalindrome(num))
+// isPalindrome(num)
