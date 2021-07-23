@@ -48,20 +48,17 @@ Output: 0
 *****************
  */
 
-var haystack = "hello", needle = "ll"
+var haystack = "hello", needle = "zhwq"
 
 
 const strStr = (haystack, needle) => {
-    let needleLength = needle.length
-    let haystackLength = haystack.length
+    if (needle === "") return 0;
 
-    if (needleLength === 0) return 0;
-
-    for (let i = 0; i < haystackLength; i ++) {
-        if (haystack.substr(i, needleLength === needle ))
-        return i;
+    if(haystack.includes(needle)) {
+        return haystack.indexOf(needle)
     }
-    return 0;
+
+    return -1;
 };
 
 console.log(strStr(haystack, needle));
