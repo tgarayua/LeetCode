@@ -12,9 +12,12 @@ An input string is valid if:
 
 Understanding The Problem
 - Summary: We want to create a function that takes in a string. The string will take be a combination of brackets, curly brackets and parenthases. The braket has to be closed by the same type of brackets and the brakets must close in the correct order.
-- inputs are strings containg a variety of brakets.
-- the output should be either true or false
-- The output can be dertermined by the inputs
+
+- Define a stack which is an array.
+- Loop through each element in a given string.
+- If the element is an opening bracket (‘(‘ or ‘{‘ or ‘[‘), push it onto the stack.
+- If the element is a closing bracket (‘)‘ or ‘}‘ or ‘]‘), pop off the last element from the stack only if matches with the encountered closing bracket and keep iterating through the string. If the closing bracket does not match with the opening bracket placed on top of the stack, break out of the loop and return false because the parentheses in the string are not balanced.
+- If the stack is empty after completely iterating over the string, return true because the parentheses in the string are balanced and you have a valid string.
 
 
 
@@ -49,26 +52,22 @@ Break It Down
 
  */
 
-var s = "()[]{}"
+let s = "()[]{}"
 
 const isValid = (str) => {
-    if (str.length % 2) return false;
-    var bracketObj = {
-        '(':')',
-        '{':'}',
-        '[':']'
-    };
+    let stack = [];
 
-    var heap = [];
-
-    for(let char of str) {
-        if(bracketObj[char]) {
-            heap.push(bracketObj[char])
-        } else {
-            if(heap.pop() !== char) return false;
-        }
+    for (let i = 0; i < str.length; i++) {
+        let currentChar = str[i]
+        let lastChar = stack[stack.length - 1]
+    
+        if (currentChar === "(" || currentChar === "[" || currentChar === "{" ) {
+            stack.push(currentChar)
+        } else if ((lastChar === "(" && currentChar === ")") || (lastChar === "[" && currentChar === "]") || (lastChar === "{" && currentChar === "}")) {
+            stack.pop()
+        } else return false
     }
-    return (!heap.length)
-};
+    return stack.length ? false : true
+}
 
 console.log(isValid(s))
