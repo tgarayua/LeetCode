@@ -1,18 +1,28 @@
+/* 
+- loop over array
+- find the compliment by subtracting the number from the goal
+- if compliment is present return the indinces
+- if compliment is not present add number to an obj
+
+*/
+
 array = [2,7,11,15]
 goal = 9
 
-const twoSum = () => {
-    let numberMap = new Map();
+const twoSum = (array, goal) => {
+    numsObj = {};
 
     for (let i = 0; i < array.length; i++) {
-        el = array[i]
-        
-        if(numberMap.has(goal - el))
-            return [i, numberMap.get(goal - el)];
-        else numberMap.set(el, i)
+        let currentNumber = [array[i]]
+        let difference = goal - currentNumber
+
+        if (difference in numsObj) {
+            return [numsObj[difference], i]
+        } else {
+            numsObj[currentNumber] = i
+        }
     }
-    console.log(goal)
-    return [];
+    return null
 };
 
-twoSum(array, goal);
+console.log(twoSum(array, goal));
