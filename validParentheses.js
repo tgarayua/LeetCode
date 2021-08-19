@@ -48,7 +48,11 @@ Break It Down
 - were going to set 3 diffrent checkers that each are responsible to checking if the brackets are present in correct order
 
 
-
+-Grind beans
+-set up cup
+-Pour espresso
+-steam milk
+-pour latte
 
  */
 

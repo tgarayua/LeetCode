@@ -16,24 +16,46 @@ Explore Examples
 
 Break It Down
 - loop through each string in the array
-- for every string loop through each character and see if they match up with other strings
+- I want to iterate through each word and if the letters exist through each
 
  */
 
-var strs = ["flower","flow","flight"]
-// var strs = ["dog","racecar","car"]
+
+
+/* 
+
+biscuit
+bisexual
+bicycle
+
+- look at the first letter of each word
+- notice if the first letter is the same
+- go through the rest of the word until the letters do not match
+
+- create a matching prefix var
+- look at the first char of the first string
+- look at the first char of all the other strings
+- if the char doesnt match the word return matching prefix
+- if the char does match then prefix += current char
+- keep going until it no longer matches
+
+
+*/
+
+var strs = ["flower","flow","floght", "flont"]
 
 const longestCommonPrefix = (strs) => {
     let prefix = "";
-    if (strs === null || strs.length === 0) return prefix
-
-    for (let i = 0; i < strs[0].length; i++) {
-        const char = strs[0][i]
-        
-        for (let j = 0; j < strs.length; j++) {
-            if (strs[j][i] !== char) return prefix
+    let firstWord = strs[0]
+    
+    for (let i = 0; i < firstWord.length; i++) {
+        let currentChar = firstWord[i]
+        for (let word of strs) {
+            if (currentChar !== word[i]) {
+                return prefix
+            }
         }
-        prefix = prefix + char
+        prefix += currentChar
     }
     return prefix
 }
