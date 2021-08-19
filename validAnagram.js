@@ -27,30 +27,34 @@ Break It Down
  */
 
 
-const validAnagram = (first, second) => {
-    //checks both strings to make sure they're the same length
-    if (first.length !== second.length) return false;
+const validAnagram = (word1, word2) => {
+    // check to see if both strings are the same length
+    if (word1.length !== word2.length) {
+        return false;
+    }
 
-    // stores the string's letter as a key and its frequency as the value
-    const letterObj = {};
+    // create a letterObj to store the letters and the frequency
+    let letterObj = {};
     
-    for (let i = 0; i < first.length; i++) {
-        let currentLetter = first[i]
-        
-        // if currentLetter exist, increment, otherwise set to 1
+    // create a for loop for the first string
+    for (let i = 0; i < word1.length; i++) {
+        let currentLetter = word1[i]
+
+        // if the current letter exist in letterObj, increment, otherwise set to 1
         letterObj[currentLetter] ? letterObj[currentLetter] += 1 : letterObj[currentLetter] = 1;
     }
 
-    for (let i = 0; i < second.length; i++) {
-        let currentLetter = second[i];
+    // create a for loop for the second string
+    for (let i = 0; i < word2.length; i++) {
+        let currentLetter = word2[i]
+
         // if we can't find the current letter or the current letter is zero then it's not an anagram
-        if(!letterObj[currentLetter]) {
+        if (!letterObj[currentLetter]|| currentLetter === 0) {
             return false;
-        } else {
-            letterObj[currentLetter] -= 1;
         }
     }
-    return true
-}
 
-console.log(validAnagram("car", "cat"));
+    return true;
+};
+
+console.log(validAnagram("car", "rac"));
