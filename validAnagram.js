@@ -16,28 +16,41 @@ Explore Examples
 
 
 Break It Down
-- create a fucnction that loops over our strings
-- create a character obj
-
+- check to see if both strings are the same length
+- create a letterObj to store the letters and the frequency
+- create a for loop for the first string
+    - if the current letter exist, increment, otherwise set to 1
+- create a for loop for the second string
+    - if we can't find the current letter or the current letter is zero then it's not an anagram
 
 
  */
 
 
-const validAnagram = (str1, str2) => {
+const validAnagram = (first, second) => {
     //checks both strings to make sure they're the same length
-    if (str1.length !== str2.length) return false;
+    if (first.length !== second.length) return false;
 
-    // sort the variable and makes each varable compareable
-    var str1Char = [];
-    var str2Char = [];
-    str1Char = str1.split('').sort().join();
-    str2Char = str2.split('').sort().join();
+    // stores the string's letter as a key and its frequency as the value
+    const letterObj = {};
+    
+    for (let i = 0; i < first.length; i++) {
+        let currentLetter = first[i]
+        
+        // if currentLetter exist, increment, otherwise set to 1
+        letterObj[currentLetter] ? letterObj[currentLetter] += 1 : letterObj[currentLetter] = 1;
+    }
 
-    // conditions to make sure that the function is an anagram
-    if (str1Char === str2Char) return true;
-
-    return false
+    for (let i = 0; i < second.length; i++) {
+        let currentLetter = second[i];
+        // if we can't find the current letter or the current letter is zero then it's not an anagram
+        if(!letterObj[currentLetter]) {
+            return false;
+        } else {
+            letterObj[currentLetter] -= 1;
+        }
+    }
+    return true
 }
 
 console.log(validAnagram("car", "cat"));

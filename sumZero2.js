@@ -1,4 +1,9 @@
-
+/**
+ * 
+ * @param {*} arr 
+ * @returns 
+ * - we want to 
+ */
 const sumZero = (arr) => {
     let left = 0;
     let right = arr.length - 1;
@@ -13,7 +18,6 @@ const sumZero = (arr) => {
             right--;
         }
     }
-
 }
 
 console.log(sumZero([-4,-2,0,1,2,5]))
