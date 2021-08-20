@@ -26,6 +26,7 @@
         let arrayStr = ""
         let thisLine = theArgs[i]
         let endOfLine = thisLine.length -1
+        
         for (let j = 0; j < thisLine.length; j++){
             let currentWord = thisLine[j].toString().toLowerCase()
             if (j !== 0){
