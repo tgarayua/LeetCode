@@ -21,28 +21,27 @@ Break It Down:
     - if num2Obj[currentNum] present, increment, otherwise set num2Obj[currentNum] = 1
  */
 
-const sameFrequency = (nums1, nums2) => {
-    let num1ToStr = nums1.toString()
-    let num2ToStr = nums2.toString()
-    if (num1ToStr.length !== num2ToStr.length) return false;
+const sameFrequency = (num1, num2) => {
+    let num1ToStr = num1.toString()
+    let num2ToStr = num2.toString()
+    let diggetObj1 = {};
+    let diggetObj2 = {};
+    
 
-    let numsObj = {};
     
     for (let i = 0; i < num1ToStr.length; i++) {
-        let currentNum = num1ToStr[i]
-        numsObj[currentNum] ? numsObj[currentNum] += 1 : numsObj[currentNum] = 1;
-        console.log(numsObj)
+        let currentDigget = num1ToStr[i]
+
+        diggetObj1[currentDigget] ? diggetObj1[currentDigget] += 1 : diggetObj1[currentDigget] = 1;
     }
     for (let i = 0; i < num2ToStr.length; i++) {
-        let currentNum = num2ToStr[i]
-        // if the current number is not in the object then return false, otherwise decriment the current number's frequency
-        if(!numsObj[currentNum]) {
-            console.log(numsObj)
-            return false
-        } else {
-            numsObj[currentNum] -= 1;
-        }
+        let currentDigget = num2ToStr[i]
+
+        !diggetObj1[currentDigget] ? false : diggetObj2[currentDigget] = 1;
     }
-    return true
+    console.log(diggetObj1 == diggetObj2)
+    // return true;
 };
-console.log(sameFrequency(3589578,5879385))
+let num1 = 34
+let num2 = 34
+console.log(sameFrequency(num1, num2))

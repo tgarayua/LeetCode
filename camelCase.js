@@ -12,11 +12,64 @@
  *      - capitalize the first string in the array
  *      - Lower case anything else !== arr[0]
  * 
- * 
  */
 
+ const args = [["apple", "One"], ["Apple", "TWO"], ["appLe", "thRee", "FOUR"]]
 
- const camelCase = (...args) => {
+const camelCase = (args) => {
+    let result = "";
+
+    for (let i = 0; i < args.length; i++) {
+        let currentLine = args[i].map(word => word.toLowerCase())
+        // console.log(`Console 1: ${ currentLine}`)
+        for (let j = 0; j < currentLine.length; j++) {
+            let firstWord = currentLine[j]
+            console.log(firstWord)
+            if (j !== 0) {
+                let newWord = currentLine[j].charAt(0).toUpperCase() + currentLine[j].slice(1);
+                
+                // console.log(currentLine[0], newWord)
+            }
+        }
+    }
+
+    return result
+};
+
+console.log(camelCase(args))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+const camelCase = (...args) => {
 
     let result = ""
     let theArgs = args[0]
@@ -26,7 +79,7 @@
         let arrayStr = ""
         let thisLine = theArgs[i]
         let endOfLine = thisLine.length -1
-        
+
         for (let j = 0; j < thisLine.length; j++){
             let currentWord = thisLine[j].toString().toLowerCase()
             if (j !== 0){
@@ -49,3 +102,4 @@ const args = [["apple", "One"], ["Apple", "TWO"], ["appLe", "thRee", "FOUR"]]
 
 let res = "appleOne appleTwo appleThreeFour"
 console.log(camelCase(args))
+*/
