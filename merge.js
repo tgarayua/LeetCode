@@ -65,29 +65,24 @@ Follow up: Can you come up with an algorithm that runs in O(m + n) time?
 
     let nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
 
-    const merge = (nums1, m, nums2, n) => {
-        console.log(nums1, m, nums2, n)
-
-        //loop over nums1 array to remove elements === 0
-        for (let i = nums1.length -1; i >= 0 ; i--) {
-            let currentNum = nums1[i]
-            
-            if(i >= m){
-                nums1.splice(i, 1);
-            }
+const merge = (nums1, m, nums2, n) => {
+    //loop over nums1 array to remove elements === 0
+    for (let i = nums1.length -1; i >= 0 ; i--) {
+        if(i >= m){
+            nums1.splice(i, 1);
         }
-    
-        //loop over nums2 array and push the current element into nums1 array
-        for (let j = 0; j < nums2.length; j++) {
-            let currentNum2 = nums2[j]
-            nums1.push(currentNum2);
-        }
-    
-        // sort the nums1 array from smallest to highest
-        nums1.sort(function(a,b) {return a - b})
-    
-        console.log(nums1)
-        return nums1
     }
+
+    //loop over nums2 array and push the current element into nums1 array
+    for (let j = 0; j < nums2.length; j++) {
+        let currentNum2 = nums2[j]
+        nums1.push(currentNum2);
+    }
+
+    // sort the nums1 array from smallest to highest
+    nums1.sort(function(a,b) {return a - b})
+
+    return nums1
+}
 
 merge(nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3)
