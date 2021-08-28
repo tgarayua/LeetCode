@@ -52,22 +52,3 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
         - if the current number and the diffrenct sum up to the goal return both indexs
  */
 
-array = [2,7,11,15]
-goal = 9
-
-const twoSum = (array, goal) => {
-    console.log(`inputs:`, array, goal)
-    let numsObj = {};
-
-    for(let i = 0; i < array.length; i++) {
-        let currentNum = array[i]
-        let difference = goal - currentNum
-        if(difference in numsObj) {
-            return [numsObj[difference], i]
-        }
-        numsObj[currentNum] = i;
-    }
-    return null
-}
-
-console.log(twoSum(array, goal));

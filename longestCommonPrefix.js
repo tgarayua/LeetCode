@@ -42,22 +42,30 @@ bicycle
 
 */
 
-var strs = ["flower","flow","floght", "flont"]
+var strs = ["flowir","flowar","flowsr", "flowdr"]
 
 const longestCommonPrefix = (strs) => {
-    let prefix = "";
-    let firstWord = strs[0]
+    console.log(`input:`, strs)
+    let prefixObj = {};
+    let prefix = ""
     
-    for (let i = 0; i < firstWord.length; i++) {
-        let currentChar = firstWord[i]
-        for (let word of strs) {
-            if (currentChar !== word[i]) {
-                return prefix
-            }
+    for (let i = 0; i < strs.length; i++) {
+        let currentWord =  strs[i];
+        for (let j = 0; j < currentWord.length; j++) {
+            let char = currentWord[j];
+            prefixObj[char] ? prefixObj[char] += 1 : prefixObj[char] = 1;
         }
-        prefix += currentChar
     }
-    return prefix
+
+    for (let char in prefixObj) {
+        prefixObj[char] -= strs.length
+        if (prefixObj[char] !== 0) {
+            return prefix
+        } else {
+            prefix += char
+        }
+    }
+    return prefix;
 }
 
-console.log(longestCommonPrefix(strs))
+console.log(longestCommonPrefix(strs));

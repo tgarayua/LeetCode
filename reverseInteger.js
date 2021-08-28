@@ -18,10 +18,22 @@ Assume the environment does not allow you to store 64-bit integers (signed or un
 // reversedInteger(456)
 
 const reverse = nums => {
-    const limit = 2147483648;
-    const k = nums < 0 ? -1 : 1;
-    const n = Number(String(Math.abs(nums)).split('').reverse().join(''));
-    return n > limit ? 0 : n * k;
-};
+    console.log(`input:`, nums)
+    if (nums < [-231, 231 - 1], then return 0.)
+    let numsStr = nums.toString();
+    let reversedInteger = "";
+
+    for (let i = numsStr.length - 1; i >= 0; i--) {
+        let currentNum = numsStr[i]
+        reversedInteger += currentNum
+        if (currentNum === "-") {
+            reversedInteger = reversedInteger.slice(0,reversedInteger.length - 1)
+            reversedInteger = reversedInteger.replace (/^/,'-')
+        }
+    }
+    console.log(`reversedInteger:`, reversedInteger)
+
+    return  reversedInteger
+}
 
 console.log(reverse(-1238787))
