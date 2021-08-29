@@ -24,10 +24,6 @@ Break It Down
 
 /* 
 
-biscuit
-bisexual
-bicycle
-
 - look at the first letter of each word
 - notice if the first letter is the same
 - go through the rest of the word until the letters do not match
@@ -42,12 +38,11 @@ bicycle
 
 */
 
-var strs = ["flowir","flowar","flowsr", "flowdr"]
+var strs = ["dog","racecar","car"]
 
 const longestCommonPrefix = (strs) => {
-    console.log(`input:`, strs)
     let prefixObj = {};
-    let prefix = ""
+    let prefix = "";
     
     for (let i = 0; i < strs.length; i++) {
         let currentWord =  strs[i];

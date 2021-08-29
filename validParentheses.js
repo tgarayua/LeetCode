@@ -56,22 +56,36 @@ Break It Down
 
  */
 
-let s = "()[]{}"
+let s = "}[()]}"
 
-const isValid = (str) => {
+const isValid = (s) => {
+    console.log(`s:`, s)
+    if (s === "") return true;
+    if (s.length < 2) return false
     let stack = [];
-
-    for (let i = 0; i < str.length; i++) {
-        let currentChar = str[i]
-        let lastChar = stack[stack.length - 1]
-    
-        if (currentChar === "(" || currentChar === "[" || currentChar === "{" ) {
-            stack.push(currentChar)
-        } else if ((lastChar === "(" && currentChar === ")") || (lastChar === "[" && currentChar === "]") || (lastChar === "{" && currentChar === "}")) {
-            stack.pop()
-        } else return false
+    let bracketObj = {
+        "[" : "]",
+        "{" : "}",
+        "(" : ")"
     }
-    return stack.length ? false : true
+
+    for (let i = 0; i < s.length; i++) {
+        let bracket = s[i];
+        if(bracketObj[bracket]) {
+            stack.push(bracket);
+            console.log(`if worked, braket:`,bracket)
+        } else {
+            let checkBracket = stack.pop()
+            console.log(`else worked, braket:`,bracket, `checkBracket:`,checkBracket)
+            if (bracketObj[checkBracket] !== bracket) {
+                return false;
+            }
+        }
+    }
+
+    if(stack.length > 0) return false;
+
+    return true
 }
 
 console.log(isValid(s))

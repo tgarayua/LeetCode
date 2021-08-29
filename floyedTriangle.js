@@ -17,6 +17,8 @@ Result:
 let input = 3;
 
 const floyedTriangle = (input) => {
+    if (s === "") return true;
+    if (s)
 
     return "end!"
 };
