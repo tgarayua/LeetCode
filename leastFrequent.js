@@ -21,24 +21,25 @@ Write a function that given a list of countries, returns the country(s) that occ
 let arr = ["Argentina", "Cuba", "Chile", "Argentina", "Cuba", "USA", "Japan", "Japan", "India"]
 
 const leastFrequent = (arr) => {
-    let frequencyObj = {};
-    let result = [];
-    
+    let freqObj = {};
+    let results = [];
+
     for (let i = 0; i < arr.length; i++) {
-        let country = arr[i]
-        frequencyObj[country] ? frequencyObj[country] += 1 : frequencyObj[country] = 1;
+        let currentCountry = arr[i]
+        freqObj[currentCountry] ? freqObj[currentCountry] += 1 : freqObj[currentCountry] = 1;
     }
 
-    let keys = Object.values(frequencyObj)
-    let min = keys.sort(function(a,b) {return a-b})
-    let minValue = min[0]
+    let values = Object.values(freqObj)
+    let sortedValues = values.sort()
+    let minValue = sortedValues[0]
 
-    for (let country in frequencyObj)
-    if (frequencyObj[country] === minValue) {
-        result.push(country)
+    for (let country in freqObj) {
+        if (freqObj[country] === minValue) {
+            results.push(country)
+        }
     }
 
-    return result
+    return results;
 }
 
 console.log(leastFrequent(arr))
