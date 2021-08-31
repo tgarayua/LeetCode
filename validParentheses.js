@@ -1,5 +1,5 @@
 /** PROBLEM 
- * Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+ * Given a string s containing just the currentCharacters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 
 An input string is valid if:
 
@@ -56,36 +56,29 @@ Break It Down
 
  */
 
-let s = "}[()]}"
+let str = "{[()]}"
 
-const isValid = (s) => {
-    console.log(`s:`, s)
-    if (s === "") return true;
-    if (s.length < 2) return false
-    let stack = [];
+const isValid = (str) => {
     let bracketObj = {
-        "[" : "]",
-        "{" : "}",
-        "(" : ")"
-    }
+        '(' : ')',
+        '{' : '}',
+        '[' : ']'
+    };
+    let stack = [];
 
-    for (let i = 0; i < s.length; i++) {
-        let bracket = s[i];
-        if(bracketObj[bracket]) {
-            stack.push(bracket);
-            console.log(`if worked, braket:`,bracket)
-        } else {
-            let checkBracket = stack.pop()
-            console.log(`else worked, braket:`,bracket, `checkBracket:`,checkBracket)
-            if (bracketObj[checkBracket] !== bracket) {
-                return false;
-            }
-        }
-    }
+    for (let currentChar of str) {
+        let currentValue = bracketObj[currentChar];
+        console.log(`currentChar:`, currentChar,`currentValue:`, bracketObj[currentChar]);
+        
+        if (currentValue) {
+            stack.push(currentValue);
+            console.log(`hit`,stack)
+        } else if (stack.pop() !== currentChar) {
+            return false;
+        };
+    };
 
-    if(stack.length > 0) return false;
+    return !stack.length;
+};
 
-    return true
-}
-
-console.log(isValid(s))
+console.log(isValid(str));
