@@ -56,7 +56,7 @@ Break It Down
 
  */
 
-let str = "{[()]}"
+let str = "{[()(]}"
 
 const isValid = (str) => {
     let bracketObj = {
@@ -66,19 +66,22 @@ const isValid = (str) => {
     };
     let stack = [];
 
-    for (let currentChar of str) {
-        let currentValue = bracketObj[currentChar];
-        console.log(`currentChar:`, currentChar,`currentValue:`, bracketObj[currentChar]);
+    for (let index = 0; index < str.length; index++) {
+        let currentBracket = str[index];
+        let currentBracketValue = bracketObj[currentBracket];
+        let lastEleOfStack = stack[stack.length - 1];
         
-        if (currentValue) {
-            stack.push(currentValue);
-            console.log(`hit`,stack)
-        } else if (stack.pop() !== currentChar) {
-            return false;
+        if (bracketObj[currentBracket]) {
+            stack.push(currentBracketValue);
+            console.log(`-> if statment 1:`, `stack:`, stack, `currentBracketValue:`, currentBracketValue, `lastEleOfStack:`, lastEleOfStack);
+            
+        } else if (currentBracket === lastEleOfStack) {
+            console.log(`-> if statment 2:`,`currentBracket:`,currentBracket, `lastEleOfStack:`, lastEleOfStack)
+            stack.pop();
         };
     };
 
-    return !stack.length;
+    return (!stack.length);
 };
 
 console.log(isValid(str));
