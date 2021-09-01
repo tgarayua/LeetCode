@@ -12,13 +12,24 @@ Result:
 ::conditions = the row incriments by one diget
 :: create a for loop that counts up to input
 :: inside that loop create another counter loop that
+
+break it down
+- print out  a triangle with 
 */
 
 let input = 3;
 
 const floyedTriangle = (input) => {
-    if (s === "") return true;
-    if (s)
+    console.log(`-> input:`);
+    console.log(`input:`, input);
+
+    let row = [];
+    let counter = 0;
+
+    for (let i = 0; i < input; i++) {
+        counter += 1;
+    }
+    console.log(``)
 
     return "end!"
 };

@@ -56,32 +56,42 @@ Break It Down
 
  */
 
-let str = "{[()(]}"
+let str = "{[()]}"
 
 const isValid = (str) => {
-    let bracketObj = {
-        '(' : ')',
-        '{' : '}',
-        '[' : ']'
-    };
+    console.log(`str:`, str)
     let stack = [];
+    let bracketObj = {
+        '{':'}',
+        '[':']',
+        '(':')'
+    };
 
+    console.log(`-> for loop variables:`)
     for (let index = 0; index < str.length; index++) {
-        let currentBracket = str[index];
+        let currentBracket = str[index]
         let currentBracketValue = bracketObj[currentBracket];
         let lastEleOfStack = stack[stack.length - 1];
-        
-        if (bracketObj[currentBracket]) {
-            stack.push(currentBracketValue);
-            console.log(`-> if statment 1:`, `stack:`, stack, `currentBracketValue:`, currentBracketValue, `lastEleOfStack:`, lastEleOfStack);
-            
-        } else if (currentBracket === lastEleOfStack) {
-            console.log(`-> if statment 2:`,`currentBracket:`,currentBracket, `lastEleOfStack:`, lastEleOfStack)
+    
+        if (currentBracketValue) {
+            console.log(`if statement 1:`)
+            stack.push(currentBracketValue)
+        } else if (stack !== 0 && currentBracket === lastEleOfStack) {
+            console.log(`if statement 2:`)
             stack.pop();
+        } else {
+            console.log(`else statement 1:`)
+            return false;
         };
+    
+        console.log(`index:`, index, `currentBracket:`, currentBracket, `currentBracketValue:`, currentBracketValue, `lastEleOfStack:`, lastEleOfStack, `stack:`, stack)
     };
 
+    // console.log(`-> variables:`);
+    // console.log(`stack:`, stack, `bracketObj:`, bracketObj);
+
     return (!stack.length);
+    return 'end!';
 };
 
 console.log(isValid(str));
