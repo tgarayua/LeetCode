@@ -1,14 +1,28 @@
+
+// let nums = [1,2,3,4,5,6,7,8,9]; // output: false
+let nums = [1,2,3,4,5,6,7,8,8,8]; // output: true
+
 const areThereDuplicates = (nums) => {
-    let numsObj = {};
+    console.log(`-> Input <-`);
+    console.log(`nums:`, nums);
 
-    for (let i = 0; i < nums.length; i++) {
-        let currentNum = nums[i]
-        numsObj[currentNum] ? numsObj[currentNum] += 1 : numsObj[currentNum] = 1
-        if (numsObj[currentNum] > 1) return true
+    let freqObj = {};
+
+    // console.log(`-> for loop variables <-`);    // for loop over nums array
+    for (let index = 0; index < nums.length; index++) {
+        let currentNum = nums[index];
+
+        freqObj[currentNum] ? freqObj[currentNum] += 1 : freqObj[currentNum] = 1;
+
+        if (freqObj[currentNum] >= 2) {
+            return true;
+        }
+    
+        // console.log(`index:`, index, `currentNum:`, currentNum); // for loop variables
     }
-    return false
-};
+    console.log(`freqObj:`, freqObj)
 
-let nums = [1,2,3,4,5,6]
+    return false;
+}
 
-console.log(areThereDuplicates(nums))
+console.log(areThereDuplicates(nums));
