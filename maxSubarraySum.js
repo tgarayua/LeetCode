@@ -13,25 +13,7 @@
  */
 
 const maxSubarraySum = (arr, num) => {
-    let maxSum = 0;
-    let tempSum = 0;
-
-    if (arr.length < num) return false;
-
-    for (let i = 0; i < num; i++) {
-        let currentNumInSubArr = arr[i]
-        maxSum += currentNumInSubArr
-    }
     
-    tempSum = maxSum
-
-    for (let i = num; i < arr.length; i++) {
-        let nextNumInSubarr = arr[i]
-        let firstNumInSubarr = arr[i - num]
-        tempSum = tempSum - firstNumInSubarr + nextNumInSubarr
-        maxSum = Math.max(maxSum, tempSum)
-    }
-    return maxSum
 };
 //                 index = [0,1,2,3,4,5,6,7,8]
 console.log(maxSubarraySum([2,6,9,2,1,8,5,6,3],3))
