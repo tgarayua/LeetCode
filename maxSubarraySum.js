@@ -26,8 +26,8 @@ const maxSubarraySum = (arr, num) => {
 
     console.log(`-> For Loop Variables <-`)
     for (let i = num; i < arr.length; i++) {
-        let nextEle = arr[i];
         let firstEle = arr[i - num];
+        let nextEle = arr[i];
         tempSum = tempSum - firstEle + nextEle;
         maxSum = Math.max(maxSum, tempSum);
 
@@ -39,5 +39,4 @@ const maxSubarraySum = (arr, num) => {
 
     return maxSum;
 };
-//                 index = [0,1,2,3,4,5,6,7,8]
 console.log(maxSubarraySum([2,6,9,3,1,8,5,6,3],3))
