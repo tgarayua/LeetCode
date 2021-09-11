@@ -23,7 +23,7 @@ const averagePair = (arr, avg) => {
     return false;
 };
 
-console.log(averagePair([1,3,3,5,6,7,10,12,19], 15.5))
+console.log(averagePair([1,3,3,5,6,7,10,12,19], 45))
 
 
 
