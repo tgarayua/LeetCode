@@ -1,3 +1,4 @@
+let str = 'thisisawesome'
 function findLongestSubstring(str) {
   let longest = 0;
   let seen = {};
@@ -6,6 +7,7 @@ function findLongestSubstring(str) {
   for (let i = 0; i < str.length; i++) {
     let char = str[i];
     if (seen[char]) {
+      console.log(seen, seen[char])
       start = Math.max(start, seen[char]);
     }
     // index - beginning of substring + 1 (to include current in count)
@@ -15,3 +17,5 @@ function findLongestSubstring(str) {
   }
   return longest;
 }
+
+console.log(findLongestSubstring(str));
