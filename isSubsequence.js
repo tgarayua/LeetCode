@@ -10,7 +10,7 @@
  * - isSubsequence("abc", "acb") // false (order matters)
  * 
  * Understand the problem
- * - summary: I want to take in the to see if the characters of string one are present in the second string in in sequential order of the first string. If string 1 characters are present in that specific order return true, else false.
+ * - summary: I want to take in the two strings see if the characters of str1 are present in the str2 in in sequential order from the first string. If str1 characters are present in that specific order return true, else false.
  * - the inputs are a str1 and str2
  * - the output should be true / false / null
  * - the output can be determined by the inputs

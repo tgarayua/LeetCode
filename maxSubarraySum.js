@@ -1,42 +1,21 @@
 /**
+ * Problem
+ * - Given an array of integers and a number, write a function called maxSubarraySum, which finds the maximum sum of a subarray with the length of the number passed to the function
  * 
- * Break it down:
- * - set a var for the maxSum and for the tempSum
- * - if the array's length is smaller than the number return null
- * - create a for loop the requested amount of n times to create a subarray
- *      - the firstEleOfSubarrInSubarr is added to the maxSum var
- * - we set the tempSum to maxSum
- * - create a for loop that iterates over the arrays length
- *      - tempSum is set to tempSum subtracted by the first number in the subarray, plus the next number that is being added into the subarray
- *      - maxSum is set to the larger of the two var. Use Math.max(maxSum, tempSum)
- * - return maxSum
+ * Note that a subarray must consist of consecutive elements from the original array. In the first example below, [100, 200, 300] is a subarray of the original array, but [100, 300] is not.
+ * 
+ * Examples
+ * - maxSubarraySum([100, 200, 300, 400], 2) // 700
+ * - maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4) // 39
+ * 
+ * Understand the problem
+ * - 
  */
 
 const maxSubarraySum = (arr, num) => {
     console.log(`-> Inputs <-`);
     console.log(`arr:`, arr, `num:`, num);
     
-    let maxSum = 0;
-    let tempSum = 0;
-
-    for (let i = 0; i < num; i++) {
-        maxSum += arr[i]
-    }
-    tempSum = maxSum;
-
-    console.log(`-> For Loop Variables <-`)
-    for (let i = num; i < arr.length; i++) {
-        let firstEle = arr[i - num];
-        let nextEle = arr[i];
-        tempSum = tempSum - firstEle + nextEle;
-        maxSum = Math.max(maxSum, tempSum);
-
-        console.log(`i:`, i,`firstEleOfSubarr:`, firstEleOfSubarr, `nextEle:`, nextEle, `tempSum:`, tempSum, `maxSum:`, maxSum)
-    }
-
-    console.log(`-> Global Variables <-`)
-    console.log(`maxSum:`, maxSum, `tempSum:`, tempSum);
-
-    return maxSum;
+    return `end!`
 };
 console.log(maxSubarraySum([2,6,9,3,1,8,5,6,3],3))
