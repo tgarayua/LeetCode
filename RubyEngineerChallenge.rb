@@ -6,7 +6,7 @@ class RubyChallenge
     base_uri "https://takehome.io/twitter"
 
     def tweets
-    self.class.get('window.json')
+    self.class.get('window.tweetjson')
     end
 end
 
