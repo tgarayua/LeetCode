@@ -11,15 +11,10 @@ An input string is valid if:
 ** PSEUDO CODE **
 
 Understanding The Problem
-- Summary: We want to create a function that takes in a string. The string will take be a combination of brackets, curly brackets and parenthases. The braket has to be closed by the same type of brackets and the brakets must close in the correct order.
+- Summary: We want to look over a string and determin if the string has brackets that open and close in the correct order.  
 
-- Define a stack which is an array.
-- Loop through each element in a given string.
-- If the element is an opening bracket (‘(‘ or ‘{‘ or ‘[‘), push it onto the stack.
-- If the element is a closing bracket (‘)‘ or ‘}‘ or ‘]‘), pop off the last element from the stack only if matches with the encountered closing bracket and keep iterating through the string. If the closing bracket does not match with the opening bracket placed on top of the stack, break out of the loop and return false because the parentheses in the string are not balanced.
-- If the stack is empty after completely iterating over the string, return true because the parentheses in the string are balanced and you have a valid string.
-
-
+- The input is a string
+- The output should be true / false
 
 Explore Examples
 - Example 1:
@@ -44,54 +39,80 @@ Output: true
 
 
 Break It Down
-- We're going to create 3 objects for each type of bracket
-- were going to set 3 diffrent checkers that each are responsible to checking if the brackets are present in correct order
-
-
--Grind beans
--set up cup
--Pour espresso
--steam milk
--pour latte
+- I want to create an parenObj
+- Populate the obj
+- Create a stack
+- Loop over str
+- if the first char in parenObj push the value into stack
+- remove the element from the stack everytime the currentChar === closing bracket
 
  */
 
 let str = "{[()]}"
 
 const isValid = (str) => {
+    console.log();
+    console.log(`isValid = (str)`);
+    console.log();
+
+    console.log();
+    console.log(`Input`);
+    console.log(`- str:`, str);
+    console.log();
     console.log(`str:`, str)
-    let stack = [];
-    let bracketObj = {
+    let string = str.toString();
+    console.log(`string:`, string)
+    let parenObj = {
         '{':'}',
-        '[':']',
-        '(':')'
+        '(':')',
+        '[':']'
     };
+    let stack = [];
 
-    console.log(`-> for loop variables:`)
-    for (let index = 0; index < str.length; index++) {
-        let currentBracket = str[index]
-        let currentBracketValue = bracketObj[currentBracket];
-        let lastEleOfStack = stack[stack.length - 1];
+    console.log(`Global Variables (before)`);
+    console.log(`- string:`, str, ',', `parenObj:`, parenObj, ',', `stack:`, stack);
+    console.log();
+
+    console.log(`For loop Variables`)
+    // if the first char in parenObj push the value into stack
+    for (let index = 0; index < string.length; index++) {
+        let currentChar = string[index];
     
-        if (currentBracketValue) {
-            console.log(`if statement 1:`)
-            stack.push(currentBracketValue)
-        } else if (stack !== 0 && currentBracket === lastEleOfStack) {
-            console.log(`if statement 2:`)
-            stack.pop();
-        } else {
-            console.log(`else statement 1:`)
-            return false;
-        };
+        console.log(`- index:`, index,',', `string:`, string, ',', `currentChar:`, currentChar);
     
-        console.log(`index:`, index, `currentBracket:`, currentBracket, `currentBracketValue:`, currentBracketValue, `lastEleOfStack:`, lastEleOfStack, `stack:`, stack)
-    };
+        for (let charKey in parenObj) {
+            if (currentChar === charKey) {
+                console.log(`If statement 1`)
+                console.log(`stack (before):`, stack);
 
-    // console.log(`-> variables:`);
-    // console.log(`stack:`, stack, `bracketObj:`, bracketObj);
+                stack.push(parenObj[charKey])
 
-    return (!stack.length);
-    return 'end!';
+                console.log(`stack (after):`, stack);
+                console.log();
+            } else if (currentChar === stack[stack.length - 1]) {
+                
+                console.log(`If statement 2`)
+                console.log(`stack (before)`, stack);
+                stack.shift();
+                console.log(`stack (after)`, stack);
+            } else if (currentChar !== charKey) {
+                return false
+            }
+        }
+    }
+    console.log();
+
+    console.log(`Global Variables (after)`);
+    console.log(`- string:`, str, ',', `parenObj:`, parenObj, ',', `stack:`, stack);
+    console.log();
+
+    if (stack.length === 0) {
+        return true;
+    } else if (stack.length !== 0) {
+        return false;
+    }
+
+    return `end!`
 };
 
 console.log(isValid(str));
