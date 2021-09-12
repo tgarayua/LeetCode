@@ -9,13 +9,51 @@
  * - maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4) // 39
  * 
  * Understand the problem
- * - 
+ * - We want to find the maxSum within the numsArr. Sum of the arr can only be as long as the num input. In example 1 the sum is can be only the sume of the two elelments in the array 300 + 400 = 700. 700 will be the maxSum
+ * the inputs in example 1 are an numsArr = [100, 200, 300, 400] and the subarrayLength = 2
+ * the ouput should be maxSum of the numsArr
+ * 
+ * Psudo code
+ * - we want to find the sum of the first 3 integers in numsArr
+ * - we want to add the next integer in the numsArr and subtract the first integer of the numsArr
  */
 
-const maxSubarraySum = (arr, num) => {
-    console.log(`-> Inputs <-`);
-    console.log(`arr:`, arr, `num:`, num);
+console.time(`time`);
+console.log(`maxSubarraySum(numsArr, subarrayLength)`);
+
+const maxSubarraySum = (numsArr, subarrayLength) => {
+    console.log();
+    console.log(`Inputs`);
+    console.log(`numsArr:`, numsArr, `subarrayLength:`, subarrayLength);
+    console.log();
+
+    let maxSum = 0;
+    let tempSum = 0;
+
+    for (let index = 0; index < subarrayLength; index++) {
+        let currentNum = numsArr[index];
+        maxSum += currentNum;
+    }
+    tempSum = maxSum;
+
+    console.log();
+    console.log(`Global Variables (after)`);
+    console.log(`maxSum:`, maxSum, ',', `tempSum:`, tempSum);
+    console.log();
+
+    console.log(`numArr for loop`);
+    for (let index = subarrayLength; index < numsArr.length; index++) {
+        let nextNum = numsArr[index];
+        let firstNum = numsArr[index - subarrayLength];
+
+        tempSum = tempSum + nextNum - firstNum;
+        maxSum = Math.max(maxSum, tempSum);
+
+        console.log(`index:`, index, ',', `nextNum:`, nextNum, ',', `firstNum:`, firstNum, ',', `maxSum:`, maxSum, ',', `tempSum:`, tempSum)
+    }
+    console.log();
     
-    return `end!`
+    return maxSum;
 };
-console.log(maxSubarraySum([2,6,9,3,1,8,5,6,3],3))
+console.log(maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4))
+console.timeEnd(`time`)
