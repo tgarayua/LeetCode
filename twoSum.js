@@ -51,4 +51,44 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
         - if the current num is inside the numsObj ++, else numsObj = 1
         - if the current number and the diffrenct sum up to the goal return both indexs
  */
+    console.time('time');
+    console.log();
+    console.log(`::: twoSum(nums, target) :::`);
+    console.log();
 
+let nums = [2,7,11,15,20,50], target = 27;
+
+const twoSum = (nums, target) => {
+    console.log(`Inputs`);
+    console.log(`- nums:`, nums, ',', `target:`, target);
+    console.log();
+
+    let numsObj = {};
+
+    console.log(`Step 1: Loop over the nums array and create a numsObj with the currentNum as the key and the index as the value:`);
+    for (let i = 0; i < nums.length; i++) {
+        let currentNum = nums[i];
+        let difference = target - currentNum;
+        let lastIndexOfArr = [nums.length - 1];
+
+        numsObj[currentNum] = i;
+
+        if (numsObj[difference] && i !== lastIndexOfArr) {
+            console.log();
+            console.log(`Step 2: If the difference is present in the numsObj, return the current index of the nums array and the diffrence's index stored int the numsObj:`);
+            console.log(`- if statement 1 hit: if (numsObj[difference])`);
+            console.log();
+            return[numsObj[difference], i];
+        } 
+
+        console.log(`- index`, i, ',', `currentNum:`, currentNum, ',', `difference:`, difference, ',', `target:`, target, ',', `numsObj:`, numsObj);
+    }
+    console.log();
+
+    return null;
+}
+
+console.log(twoSum(nums, target));
+console.log();
+
+console.timeEnd('time');
