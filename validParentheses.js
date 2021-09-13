@@ -47,10 +47,10 @@ Break It Down
 
  */
 console.time(`time`);
-let str = "()[]{}[[]]";
+let str = "([}}])";
 
 const isValid = (str) => {
-    if (str.length % 2 === 1) {
+    if(str.length % 2 == 1) {
         return false;
     }
     let parenObj = {
@@ -68,6 +68,8 @@ const isValid = (str) => {
             stack.push(parenObj[currentChar]);
         } else if (currentChar === lastEleOfStack) {
             stack.pop();
+        } else {
+            return false
         }
     }
 
@@ -77,7 +79,7 @@ const isValid = (str) => {
         return false;
     }
     return null;
-};
+}
 
 console.log(isValid(str));
-console.timeEnd(`time`)
+console.timeEnd(`time`);
